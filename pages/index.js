@@ -10,7 +10,7 @@ export default function Home() {
           content="Dashboard for result management system"
         />
       </Head>
-      <div className="centerDiv">This is the student dashboard.</div>
+      <div className="centerDiv">This is the student dashboard</div>
     </>
   );
 }

@@ -18,7 +18,11 @@ body {
 }
 
 body {
-  color: white;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  /* color: white; */
   background-color: black;
   line-height: 1;
   font-size: 1.4rem;
@@ -33,9 +37,22 @@ a {
   width: 100vw;
   height: 100vh;
   display: flex;
+  color: white;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
   font-weight: 700;
+}
+
+.centerDiv > button {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid white;
+  color: white;
+  cursor: pointer;
+  background-color: transparent;
 }
 /* Temp CSS delete later */
