@@ -1,0 +1,57 @@
+import { connectToDatabase } from "@/lib/db";
+
+export default async function handler(req, res) {
+  if (req.method !== "GET") {
+    res.status(401).json({ message: "Not authorized!" });
+    return;
+  }
+
+  const { studentId } = req.query;
+
+  if (!studentId || studentId.length === 0 || studentId.trim().length === 0) {
+    res.status(402).json({ message: "Student Id is required." });
+    return;
+  }
+
+  const client = await connectToDatabase();
+  const db = client.db();
+
+  try {
+    const collection = db.collection("students");
+    const marks = await collection.findOne(
+      { student_id: studentId.trim() },
+      {
+        projection: {
+          student_id: 1,
+          assessment_marks: 1,
+          attendance_marks: 1,
+          linkedin_post_marks: 1,
+          project_review_marks: 1,
+          project_submission_marks: 1,
+          total: {
+            $add: [
+              "$assessment_marks",
+              "$attendance_marks",
+              "$linkedin_post_marks",
+              "$project_review_marks",
+              "$project_submission_marks",
+            ],
+          },
+        },
+      }
+    );
+
+    if (!marks) {
+      return res
+        .status(404)
+        .json({ message: "Marks not found for this student." });
+    }
+
+    res.status(200).json(marks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error Fetching Users." });
+  } finally {
+    await client.close();
+  }
+}
