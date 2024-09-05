@@ -1,3 +1,4 @@
+import Student from "@/components/student/student";
 import Head from "next/head";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
           content="Dashboard for result management system"
         />
       </Head>
-      <div className="centerDiv">This is the student dashboard</div>
+      <Student />
     </>
   );
 }

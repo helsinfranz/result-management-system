@@ -63,8 +63,7 @@ export default function Auth() {
     const password = loginPassword.current.value;
     try {
       const res = await signIn("credentials", {
-        redirect: true,
-        callbackUrl: "/admin",
+        redirect: false,
         email: email,
         password: password,
       });
@@ -80,7 +79,7 @@ export default function Auth() {
   }
 
   if (status === "authenticated") {
-    router.push("/");
+    router.push("/admin");
   } else if (status === "unauthenticated") {
     return (
       <>
