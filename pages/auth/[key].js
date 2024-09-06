@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import classes from "@/styles/auth.module.css";
+import Link from "next/link";
+import Loader from "@/components/loader/loader";
+import Image from "next/image";
 
 export default function Auth() {
   const router = useRouter();
@@ -93,173 +96,92 @@ export default function Auth() {
             name="description"
             content="Admin Page for result management system"
           />
-          <style>
-            {`body { 
-            align-items: center;
-            background: linear-gradient(to bottom, #ffffff, #afa3ff);
-          }`}
-          </style>
         </Head>
-        {/* <div className="centerDiv">Auth Page - {key}</div> */}
+        {/* <div className={classes.logoMain}>
+          <Image src={"/logo.png"} alt="logo" width={200} height={200} />
+        </div> */}
         <div className={classes.container}>
-          <div className={classes.login_box}>
-            <h1 className={classes.h1}>
-              Welcome to <span className={classes.highlight}>RMS</span>!
-            </h1>
-            {authKey === "signup" ? (
-              <form className={classes.form} onSubmit={handleSignup}>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  required
-                  className={classes.input}
-                  minLength={3}
-                  maxLength={20}
-                  ref={userName}
-                />
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  required
-                  className={classes.input}
-                  ref={emailRef}
-                />
-                <div className={classes.input_box}>
+          {authKey === "signup" ? (
+            <div className={classes.loginBox}>
+              <p>Signup</p>
+              <form onSubmit={handleSignup}>
+                <div className={classes.userBox}>
                   <input
-                    type="password"
-                    placeholder="Password"
                     required
-                    minLength={4}
+                    type="name"
+                    name="name"
+                    minLength={3}
                     maxLength={20}
-                    className={classes.input}
-                    ref={passwordRef}
+                    ref={userName}
                   />
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    onClick={() =>
-                      passwordRef.current.type === "password"
-                        ? (passwordRef.current.type = "text")
-                        : (passwordRef.current.type = "password")
-                    }
-                  >
-                    <path
-                      d="M3 13C6.6 5 17.4 5 21 13"
-                      stroke="#999999"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 17C10.3431 17 9 15.6569 9 14C9 12.3431 10.3431 11 12 11C13.6569 11 15 12.3431 15 14C15 15.6569 13.6569 17 12 17Z"
-                      stroke="#999999"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <label htmlFor="name">Name</label>
                 </div>
-                <button
-                  type="submit"
-                  className={`${classes.active_btn} ${classes.button}`}
-                >
-                  {loading ? "Loading..." : "Sign up"}
-                </button>
-              </form>
-            ) : (
-              <form className={classes.form} onSubmit={handleLogin}>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  required
-                  className={classes.input}
-                  ref={loginEmail}
-                />
-                <div className={classes.input_box}>
+                <div className={classes.userBox}>
+                  <input type="name" required ref={loginEmail} name="email" />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className={classes.userBox}>
                   <input
                     type="password"
-                    placeholder="Password"
                     required
                     minLength={4}
                     maxLength={20}
-                    className={classes.input}
                     ref={loginPassword}
                   />
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    onClick={() =>
-                      loginPassword.current.type === "password"
-                        ? (loginPassword.current.type = "text")
-                        : (loginPassword.current.type = "password")
-                    }
-                  >
-                    <path
-                      d="M3 13C6.6 5 17.4 5 21 13"
-                      stroke="#999999"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 17C10.3431 17 9 15.6569 9 14C9 12.3431 10.3431 11 12 11C13.6569 11 15 12.3431 15 14C15 15.6569 13.6569 17 12 17Z"
-                      stroke="#999999"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <label htmlFor="password">Password</label>
                 </div>
-                <button
-                  type="submit"
-                  className={`${classes.active_btn} ${classes.button}`}
-                >
-                  {loading ? "Loading..." : "Login"}
+                <button type="submit">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  {loading ? <Loader /> : "Submit"}
                 </button>
               </form>
-            )}
-            <p className={classes.p}>
-              {authKey === "signup" ? (
-                <>
-                  Already have an account?
-                  <a className={classes.a}>
-                    <span
-                      className={classes.highlight}
-                      onClick={() => router.push("/auth/login")}
-                    >
-                      {" "}
-                      Log in
-                    </span>
-                    .
-                  </a>
-                </>
-              ) : (
-                <>
-                  Don’t have an account?
-                  <a className={classes.a}>
-                    {" "}
-                    Create a{" "}
-                    <span
-                      className={classes.highlight}
-                      onClick={() => router.push("/auth/signup")}
-                    >
-                      new account
-                    </span>
-                    .
-                  </a>
-                </>
-              )}
-            </p>
-          </div>
+              <p>
+                Already have an account?{" "}
+                <Link href="/auth/login" className={classes.a2}>
+                  Log In!
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <div className={classes.loginBox}>
+              <p>Login</p>
+              <form onSubmit={handleLogin}>
+                <div className={classes.userBox}>
+                  <input type="name" required ref={loginEmail} name="email" />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className={classes.userBox}>
+                  <input
+                    type="password"
+                    required
+                    minLength={4}
+                    maxLength={20}
+                    ref={loginPassword}
+                  />
+                  <label htmlFor="password">Password</label>
+                </div>
+                <button type="submit">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  {loading ? <Loader /> : "Submit"}
+                </button>
+              </form>
+              <p>
+                Don't have an account?{" "}
+                <Link href="/auth/signup" className={classes.a2}>
+                  Sign up!
+                </Link>
+              </p>
+            </div>
+          )}
         </div>
       </>
     );
   }
-  return <p>Loading...</p>;
+  return <div></div>;
 }
