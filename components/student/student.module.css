@@ -1,12 +1,182 @@
 .centerDiv {
-  width: 100vw;
+  width: 85vw;
   height: 100vh;
   display: flex;
   color: white;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 4rem;
-  font-weight: 700;
+  padding: 1rem;
+}
+
+.header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.header .img {
+  display: flex;
+  align-items: center;
+}
+
+.header .img img {
+  height: 12rem;
+  width: 12rem;
+}
+
+.header .Services {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header .Services > span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.header .Services h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.header a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  transition: 0.3s;
+}
+
+.header a:hover {
+  color: rgba(255, 255, 255);
+  transition: 0.3s;
+}
+
+.header .FAQs {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header .FAQs h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.heading {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  text-align: center;
+}
+
+.heading h1 {
+  font-size: 7rem;
+  font-weight: 900;
+}
+
+.heading p {
+  font-size: 1.7rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.searchbar {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.5rem;
+  background-color: rgb(30, 30, 30);
+}
+
+.searchbar input {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  outline: none;
+  padding: 0.5rem 2rem;
+  width: 100%;
+}
+
+.searchbar::placeholder {
+  color: white;
+}
+
+.searchbar button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 999px;
+  padding: 1.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.sections h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.boxes {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  justify-content: space-between;
+}
+
+.boxes .box {
+  background-color: black;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  cursor: default;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.boxes .box:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.box h4 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.box p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.5);
 }
