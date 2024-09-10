@@ -59,6 +59,11 @@
   transition: 0.3s;
 }
 
+.header .Services > span {
+  width: 2px;
+  height: 2px;
+}
+
 .header .FAQs {
   justify-self: flex-end;
   display: flex;
@@ -89,6 +94,7 @@
 .heading p {
   font-size: 1.7rem;
   color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
 }
 
 .searchbar {
@@ -126,6 +132,7 @@
   outline: none;
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
 }
 
 .sections {
@@ -172,6 +179,7 @@
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .box p {
@@ -179,4 +187,268 @@
   font-weight: 400;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.smallScreenOptions {
+  display: none;
+}
+
+.searchOn {
+  position: fixed;
+  width: calc(100% - 4rem);
+  top: 2rem;
+  left: 2rem;
+  z-index: 100;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.searchOn::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0.5rem) brightness(0.5);
+  z-index: -1;
+}
+
+.viewResult {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  width: calc(100% - 4rem);
+  height: calc(100% - 12rem);
+  border-radius: 2rem;
+  top: 14rem;
+  left: 2rem;
+  z-index: 100;
+  background-color: rgba(200, 200, 200);
+  transition: 0.5s;
+}
+
+.viewResultOn {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.5s;
+  top: 10rem;
+}
+
+.loadingHolder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 73em) {
+  .heading {
+    width: 70%;
+  }
+
+  .heading h1 {
+    font-size: 6rem;
+  }
+
+  .heading p {
+    font-size: 1.5rem;
+  }
+
+  .boxes .box {
+    height: 100%;
+  }
+
+  .boxes {
+    gap: 4rem;
+  }
+
+  .box h4 {
+    font-size: 1.3rem;
+  }
+
+  .box p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 60.125em) {
+  .heading {
+    width: 90%;
+    gap: 3rem;
+  }
+
+  .heading h1 {
+    font-size: 4.5rem;
+  }
+
+  .heading p {
+    font-size: 1.3rem;
+  }
+
+  .boxes {
+    gap: 2rem;
+  }
+
+  .box h4 {
+    font-size: 1.2rem;
+  }
+
+  .box p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 48.75em) {
+  .header .img img {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .header .Services h3,
+  .header .FAQs h3 {
+    font-size: 1.2rem;
+  }
+
+  .heading {
+    gap: 2rem;
+  }
+
+  .heading h1 {
+    font-size: 3.5rem;
+  }
+
+  .heading p {
+    font-size: 1rem;
+  }
+
+  .searchbar {
+    padding: 0.2rem;
+  }
+
+  .searchbar input {
+    font-size: 1.2rem;
+  }
+
+  .searchbar button {
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+  }
+
+  .boxes {
+    gap: 2rem;
+  }
+
+  .box h4 {
+    font-size: 1rem;
+  }
+
+  .viewResult {
+    height: calc(100% - 10rem);
+    top: 10rem !important;
+  }
+
+  .viewResultOn {
+    top: 8rem !important;
+  }
+}
+
+@media (max-width: 36.25em) {
+  .centerDiv {
+    height: 100%;
+  }
+  .header {
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0rem;
+  }
+  .header .img,
+  .header .FAQs {
+    display: none;
+  }
+  .header .Services {
+    margin: 0;
+  }
+  .smallScreenOptions {
+    display: block;
+  }
+
+  .heading {
+    gap: 4rem;
+  }
+
+  .heading h1 {
+    font-size: 2.5rem;
+  }
+
+  .heading p {
+    font-size: 1.2rem;
+  }
+
+  .searchbar {
+    width: 100%;
+  }
+
+  .sections {
+    width: 90%;
+    margin-top: 4rem;
+  }
+
+  .boxes {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .searchOn {
+    width: calc(100% - 4rem);
+  }
+}
+
+@media (max-width: 30em) {
+  .centerDiv {
+    width: 90vw;
+    padding: 0.5rem;
+  }
+  .header .Services {
+    gap: 0.5rem;
+  }
+  .header .Services h3 {
+    font-size: 1.2rem;
+  }
+  .heading h1 {
+    font-size: 2rem;
+  }
+  .searchbar {
+    padding: 0.1rem;
+  }
+  .searchbar input {
+    font-size: 0.8rem;
+  }
+  .searchbar button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  .heading p {
+    font-size: 1rem;
+  }
+  .sections {
+    width: 100%;
+  }
+  .sections > h2 {
+    font-size: 1.2rem;
+  }
+  .viewResult {
+    height: calc(100% - 9rem);
+    top: 9rem !important;
+  }
+
+  .viewResultOn {
+    top: 7rem !important;
+  }
 }
