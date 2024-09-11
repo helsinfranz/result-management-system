@@ -5,20 +5,33 @@ import { CiCalculator2 } from "react-icons/ci";
 import { FaCheck, FaLinkedinIn } from "react-icons/fa";
 import { useRef, useState } from "react";
 import Loader from "../loader/loader";
+import GlitchLoader from "../loader/glitch_loader";
 
 export default function Student() {
   const [searchOn, setSearchOn] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState({});
   const searchMainRef = useRef(null);
   const searchRef = useRef(null);
 
   async function submitHandler(e) {
     e.preventDefault();
-    setLoading(!loading);
-    // setLoading(true);
+    setLoading(true);
+    setResult({});
     setSearchOn(true);
     console.log(searchRef.current.value);
-    // setLoading(false);
+    // Wait for 5 sec
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    setResult({
+      id: 101,
+      attendanceMarks: 20,
+      projectReviewMarks: 30,
+      assessmentMarks: 40,
+      projectSubmissionMarks: 20,
+      linkedInPostMarks: 30,
+      total: 140,
+    });
+    setLoading(false);
   }
   return (
     <div className={classes.centerDiv}>
@@ -95,10 +108,104 @@ export default function Student() {
           </button>
         </form>
         <div
+          className={`${searchOn ? classes.backdrop : ""}`}
+          style={searchOn ? {} : { opacity: 0, pointerEvents: "none" }}
+        ></div>
+        <div
           className={`${classes.viewResult} ${
             searchOn ? classes.viewResultOn : ""
           }`}
-        ></div>
+          style={loading ? { overflow: "hidden" } : {}}
+        >
+          <h3>
+            Result for{" "}
+            <strong>{result.id ? result.id : searchRef?.current?.value}</strong>
+          </h3>
+          <div className={classes.gridResultView}>
+            <div className={classes.gridResultViewSingle}>
+              <div className={classes.gridResultViewTopic}>
+                Attendance Marks:
+              </div>
+              <div className={classes.gridResultViewMain}>
+                {loading ? (
+                  <GlitchLoader />
+                ) : result.attendanceMarks ? (
+                  result.attendanceMarks
+                ) : (
+                  "N.A."
+                )}
+              </div>
+            </div>
+            <div className={classes.gridResultViewSingle}>
+              <div className={classes.gridResultViewTopic}>
+                Project Review Marks:
+              </div>
+              <div className={classes.gridResultViewMain}>
+                {loading ? (
+                  <GlitchLoader />
+                ) : result.projectReviewMarks ? (
+                  result.projectReviewMarks
+                ) : (
+                  "N.A."
+                )}
+              </div>
+            </div>
+            <div className={classes.gridResultViewSingle}>
+              <div className={classes.gridResultViewTopic}>
+                Assessment Marks:
+              </div>
+              <div className={classes.gridResultViewMain}>
+                {loading ? (
+                  <GlitchLoader />
+                ) : result.assessmentMarks ? (
+                  result.assessmentMarks
+                ) : (
+                  "N.A."
+                )}
+              </div>
+            </div>
+            <div className={classes.gridResultViewSingle}>
+              <div className={classes.gridResultViewTopic}>
+                Project Submission Marks:
+              </div>
+              <div className={classes.gridResultViewMain}>
+                {loading ? (
+                  <GlitchLoader />
+                ) : result.projectSubmissionMarks ? (
+                  result.projectSubmissionMarks
+                ) : (
+                  "N.A."
+                )}
+              </div>
+            </div>
+            <div className={classes.gridResultViewSingle}>
+              <div className={classes.gridResultViewTopic}>
+                LinkedIn Post Marks:
+              </div>
+              <div className={classes.gridResultViewMain}>
+                {loading ? (
+                  <GlitchLoader />
+                ) : result.linkedInPostMarks ? (
+                  result.linkedInPostMarks
+                ) : (
+                  "N.A."
+                )}
+              </div>
+            </div>
+          </div>
+          <div className={classes.gridResultViewTotal}>
+            <div className={classes.gridResultViewTopic}>Total</div>
+            <div className={classes.gridResultViewMain}>
+              {loading ? (
+                <GlitchLoader />
+              ) : result.total ? (
+                result.total
+              ) : (
+                "N.A."
+              )}
+            </div>
+          </div>
+        </div>
       </div>
       <div className={classes.sections}>
         <h2>Track Your Academic performance</h2>
