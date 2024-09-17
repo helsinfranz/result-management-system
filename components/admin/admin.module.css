@@ -1,0 +1,12 @@
+.admin {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  background-color: black;
+}
+
+.adminTray {
+  border-right: 1px solid #222;
+  height: 100vh;
+}

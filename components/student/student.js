@@ -21,7 +21,7 @@ export default function Student() {
     setSearchOn(true);
     console.log(searchRef.current.value);
     // Wait for 5 sec
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     setResult({
       id: 101,
       attendanceMarks: 20,

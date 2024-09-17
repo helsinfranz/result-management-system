@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
-import { signOut } from "next-auth/react";
+import AdminComponent from "@/components/admin/admin";
 
 export default function Admin({ session }) {
   return (
@@ -14,8 +14,7 @@ export default function Admin({ session }) {
         />
       </Head>
       <div className="centerDiv">
-        Admin Page - {session?.user?.name ? session?.user?.name : "User"}
-        <button onClick={() => signOut()}>Logout</button>
+        <AdminComponent session={session} />
       </div>
     </>
   );
