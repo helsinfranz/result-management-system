@@ -4,9 +4,202 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   background-color: black;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.admin svg {
+  width: 2.2rem;
+  height: 2.2rem;
 }
 
 .adminTray {
-  border-right: 1px solid #222;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 3rem;
   height: 100vh;
+  border-right: 1px solid #222;
+}
+
+.adminTray > div:last-child {
+  margin-top: auto;
+}
+
+.adminName {
+  font-size: 2.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.adminUser {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.adminUser > div:last-child {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.adminUser > div:last-child > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.8;
+}
+
+.adminNav,
+.adminOthers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminOthers {
+  margin-bottom: 2rem;
+}
+
+.adminNav > div,
+.adminOthers > div {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.75rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.adminNav > div:hover,
+.adminOthers > div:hover {
+  background-color: #161616;
+  transition: all 0.3s ease-in-out;
+}
+
+.adminNavSelected {
+  background-color: #222;
+  opacity: 1 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.adminMainTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding: 2rem 2.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid #222;
+}
+
+.adminMainText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.adminMainTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.adminMainSubTitle {
+  font-size: 1.75rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.adminMainUser {
+  display: flex;
+  align-items: center;
+}
+
+.adminMainNotifications {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 2rem;
+  border-right: 1px solid #222;
+}
+
+.adminMainNotification {
+  padding: 0.75rem;
+  background-color: #111;
+  border-radius: 1rem;
+  border: 1px solid #333;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.adminMainNotification::after {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: red;
+  border: 1px solid #d4d4d4;
+}
+
+.adminUserMain {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.adminUserMain > div:last-child {
+  margin-left: 3rem;
+}
+
+.adminUserImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid #222;
+  border-radius: 1rem;
+}
+
+.adminUserText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.adminUserTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.adminUserTeam {
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.adminUserOptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
 }
