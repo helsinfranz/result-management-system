@@ -13,11 +13,17 @@ import {
 import { CiLinkedin } from "react-icons/ci";
 import { HiBell } from "react-icons/hi";
 import { BiSolidMessageSquareDetail } from "react-icons/bi";
+import { RiFileExcel2Fill } from "react-icons/ri";
+import { FiUpload } from "react-icons/fi";
+import { ImBin } from "react-icons/im";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function AdminComponent({ session }) {
   const [selectedNav, setSelectedNav] = useState(1);
+  const [filename, setFilename] = useState("Not selected file");
+  const uploadRef = useRef(null);
+
   return (
     <div className={classes.admin}>
       <div className={classes.adminTray}>
@@ -139,7 +145,34 @@ export default function AdminComponent({ session }) {
             </div>
           </div>
         </div>
-        <div className={classes.adminMainMain}></div>
+        <div className={classes.adminMainMain}>
+          <div className={classes.adminMainUpload}>
+            <div className={classes.container}>
+              <label htmlFor="file" className={classes.header}>
+                <FiUpload /> <p>Browse File to upload!</p>
+              </label>
+              <div className={classes.footer}>
+                <RiFileExcel2Fill />
+                <p>{filename}</p>
+                <ImBin
+                  onClick={() => {
+                    uploadRef.current.value = null;
+                    setFilename("Not selected file");
+                  }}
+                />
+              </div>
+              <input
+                id="file"
+                type="file"
+                ref={uploadRef}
+                onChange={() => {
+                  setFilename(uploadRef.current.files[0].name);
+                }}
+              />
+            </div>
+          </div>
+          <div className={classes.adminMainEntry}></div>
+        </div>
       </div>
     </div>
   );
