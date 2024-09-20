@@ -5,11 +5,13 @@ import { IoMdLogOut } from "react-icons/io";
 import { FaHeadphonesAlt, FaUser } from "react-icons/fa";
 import { SiTicktick } from "react-icons/si";
 import {
+  MdDelete,
   MdKeyboardDoubleArrowDown,
   MdOutlineAssessment,
   MdOutlineCollectionsBookmark,
   MdOutlineRateReview,
 } from "react-icons/md";
+import { IoSave } from "react-icons/io5";
 import { CiLinkedin } from "react-icons/ci";
 import { HiBell } from "react-icons/hi";
 import { BiSolidMessageSquareDetail } from "react-icons/bi";
@@ -171,7 +173,43 @@ export default function AdminComponent({ session }) {
               />
             </div>
           </div>
-          <div className={classes.adminMainEntry}></div>
+          <div className={classes.adminMainLabel}>
+            <div className={classes.adminSubmitText}>
+              Check before submitting
+            </div>
+            <div className={classes.adminSubmitButton}>
+              Submit
+              <IoSave />
+            </div>
+          </div>
+          <div className={classes.adminMainEntry}>
+            <div className={classes.tableMain}>
+              <div>Student ID</div>
+              <div>Marks</div>
+              <div style={{ justifySelf: "center" }}>Delete</div>
+            </div>
+            <div className={classes.tableMain}>
+              <div className={classes.tableId}>101</div>
+              <div className={classes.tableMarks}>53</div>
+              <div className={classes.tableDelete}>
+                <MdDelete />
+              </div>
+            </div>
+            <div className={classes.tableMain}>
+              <div className={classes.tableId}>101</div>
+              <div className={classes.tableMarks}>53</div>
+              <div className={classes.tableDelete}>
+                <MdDelete />
+              </div>
+            </div>
+            <div className={classes.tableMain}>
+              <div className={classes.tableId}>101</div>
+              <div className={classes.tableMarks}>53</div>
+              <div className={classes.tableDelete}>
+                <MdDelete />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
