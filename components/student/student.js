@@ -19,18 +19,26 @@ export default function Student() {
     setLoading(true);
     setResult({});
     setSearchOn(true);
-    console.log(searchRef.current.value);
-    // Wait for 5 sec
-    await new Promise((resolve) => setTimeout(resolve, 10000));
-    setResult({
-      id: 101,
-      attendanceMarks: 20,
-      projectReviewMarks: 30,
-      assessmentMarks: 40,
-      projectSubmissionMarks: 20,
-      linkedInPostMarks: 30,
-      total: 140,
-    });
+    const search = searchRef.current.value;
+    try {
+      const res = await fetch(`/api/results/${search}`);
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.message || "Something went wrong");
+        return;
+      }
+      setResult({
+        id: data.student_id,
+        attendanceMarks: data.assessment_marks,
+        projectReviewMarks: data.project_review_marks,
+        assessmentMarks: data.attendance_marks,
+        projectSubmissionMarks: data.project_submission_marks,
+        linkedInPostMarks: data.linkedin_post_marks,
+        total: data.total,
+      });
+    } catch (error) {
+      console.log(error);
+    }
     setLoading(false);
   }
   return (

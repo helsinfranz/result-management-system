@@ -28,15 +28,15 @@ export default async function handler(req, res) {
           linkedin_post_marks: 1,
           project_review_marks: 1,
           project_submission_marks: 1,
-          total: {
-            $add: [
-              "$assessment_marks",
-              "$attendance_marks",
-              "$linkedin_post_marks",
-              "$project_review_marks",
-              "$project_submission_marks",
-            ],
-          },
+          // total: {
+          //   $add: [
+          //     "$assessment_marks",
+          //     "$attendance_marks",
+          //     "$linkedin_post_marks",
+          //     "$project_review_marks",
+          //     "$project_submission_marks",
+          //   ],
+          // },
         },
       }
     );
@@ -47,7 +47,20 @@ export default async function handler(req, res) {
         .json({ message: "Marks not found for this student." });
     }
 
-    res.status(200).json(marks);
+    const totalMarks = [
+      marks.assessment_marks,
+      marks.attendance_marks,
+      marks.linkedin_post_marks,
+      marks.project_review_marks,
+      marks.project_submission_marks,
+    ].reduce((total, mark) => total + (parseFloat(mark) || 0), 0);
+
+    const result = {
+      total: totalMarks.toFixed(2),
+      ...marks,
+    };
+
+    res.status(200).json(result);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error Fetching Users." });

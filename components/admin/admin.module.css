@@ -1,12 +1,12 @@
 .admin {
   height: 100vh;
+  max-height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 4fr;
   background-color: black;
   font-size: 2rem;
   font-weight: 400;
-  overflow: hidden;
 }
 
 .admin svg {
@@ -207,8 +207,12 @@
 
 /* UPLOAD FILE */
 
+.adminMain {
+  overflow-y: auto;
+}
+
 .container {
-  height: 40rem;
+  height: 30rem;
   width: 100%;
   margin: 0 auto;
   /* margin-top: 2rem; */
@@ -314,7 +318,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   overflow-y: auto;
   position: relative;
   scrollbar-width: thin;
@@ -340,7 +344,7 @@
   font-weight: 600;
 }
 
-.tableMain:nth-child(3n) {
+.tableMain:nth-child(2n) {
   background-color: #111;
 }
 
@@ -348,4 +352,152 @@
   color: rgba(255, 0, 0, 0.8);
   justify-self: center;
   cursor: pointer;
+}
+
+.adminMainFooter {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px dotted rgba(255, 255, 255, 0.3);
+}
+
+.adminSmall,
+.adminUserLogout {
+  display: none;
+}
+
+.loaderCheck {
+  padding: 1rem 5.65rem;
+}
+
+.adminImage,
+.adminName {
+  cursor: pointer;
+}
+
+@media (max-width: 73em) {
+  .admin {
+    grid-template-columns: 2fr 6fr;
+  }
+}
+
+@media (max-width: 60.125em) {
+  .admin {
+    display: flex;
+  }
+  .adminMain {
+    width: 100%;
+  }
+  .adminNav > div > div:last-child,
+  .adminOthers > div > div:last-child,
+  .adminName,
+  .adminOptions {
+    display: none;
+  }
+  .adminNav > div,
+  .adminOthers > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 50%;
+    padding: 2rem;
+  }
+  .adminTray {
+    padding: 0rem;
+  }
+  .adminUser {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 48.75em) {
+  .adminMainTitle {
+    font-size: 1.5rem;
+  }
+  .adminMainSubTitle {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+  .adminMainNotifications {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .adminUserMain {
+    padding-left: 1rem;
+  }
+  .adminUserTitle {
+    font-size: 1.2rem;
+  }
+  .adminUserTeam {
+    font-size: 1rem;
+  }
+  .adminUserMain > div:last-child {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 36.25em) {
+  .adminTray {
+    display: none;
+  }
+  .adminSmall {
+    height: max-content;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    backdrop-filter: blur(0.5rem) brightness(0.5);
+    border-top-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    border-top: 1px solid #222;
+  }
+  .adminSmall > .adminNav {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  .adminMain {
+    padding-bottom: 8.5rem;
+  }
+}
+
+@media (max-width: 30em) {
+  .adminUserMain {
+    display: none;
+  }
+  .adminMainText {
+    border-right: none;
+  }
+  .adminUserLogout {
+    display: flex;
+    margin-left: 1rem;
+  }
+  .adminUserLogout::after {
+    display: none;
+  }
+  .adminSubmitText {
+    font-size: 1.5rem;
+  }
+  .adminSubmitButton {
+    font-size: 1.5rem;
+  }
+  .adminSubmitButton svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tableMain {
+    font-size: 1.5rem;
+  }
+  .tableMain:first-child {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .adminMainFooter > p {
+    font-size: 1.5rem;
+  }
+  .loaderCheck {
+    padding: 0.65rem 4.95rem;
+  }
 }
