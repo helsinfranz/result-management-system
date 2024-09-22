@@ -88,7 +88,7 @@ export default function CodersComp() {
             </h3>
           </Link>
           <span className={classes.smallScreenOptions}></span>
-          <Link href="/faqs" className={classes.smallScreenOptions}>
+          <Link href="/" className={classes.smallScreenOptions}>
             <h3>FAQs</h3>
           </Link>
         </div>

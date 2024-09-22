@@ -76,12 +76,12 @@ export default function Student() {
             </h3>
           </Link>
           <span className={classes.smallScreenOptions}></span>
-          <Link href="/faqs" className={classes.smallScreenOptions}>
+          <Link href="/" className={classes.smallScreenOptions}>
             <h3>FAQs</h3>
           </Link>
         </div>
         <div className={classes.FAQs}>
-          <Link href="/faqs">
+          <Link href="/">
             <h3>FAQs</h3>
           </Link>
         </div>
