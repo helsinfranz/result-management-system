@@ -66,7 +66,8 @@
 }
 
 .adminNav > div,
-.adminOthers > div {
+.adminOthers > div,
+.adminOthers > a {
   width: 100%;
   padding: 2rem;
   font-size: 1.75rem;
@@ -80,7 +81,8 @@
 }
 
 .adminNav > div:hover,
-.adminOthers > div:hover {
+.adminOthers > div:hover,
+.adminOthers > a:hover {
   background-color: #161616;
   transition: all 0.3s ease-in-out;
 }
@@ -389,12 +391,14 @@
   }
   .adminNav > div > div:last-child,
   .adminOthers > div > div:last-child,
+  .adminOthers > a > div:last-child,
   .adminName,
   .adminOptions {
     display: none;
   }
   .adminNav > div,
-  .adminOthers > div {
+  .adminOthers > div,
+  .adminOthers > a {
     display: flex;
     align-items: center;
     justify-content: center;

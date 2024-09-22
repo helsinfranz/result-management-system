@@ -59,6 +59,10 @@
   transition: 0.3s;
 }
 
+.selectedNav {
+  color: rgba(255, 255, 255);
+}
+
 .header .Services > span {
   width: 2px;
   height: 2px;

@@ -6,6 +6,7 @@ import { FaCheck, FaLinkedinIn } from "react-icons/fa";
 import { useRef, useState } from "react";
 import Loader from "../loader/loader";
 import GlitchLoader from "../loader/glitch_loader";
+import { usePathname } from "next/navigation";
 
 export default function Student() {
   const [searchOn, setSearchOn] = useState(false);
@@ -13,6 +14,7 @@ export default function Student() {
   const [result, setResult] = useState({});
   const searchMainRef = useRef(null);
   const searchRef = useRef(null);
+  const pathname = usePathname();
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -56,16 +58,22 @@ export default function Student() {
           </Link>
         </div>
         <div className={classes.Services}>
-          <Link href="/home" className={classes.smallScreenOptions}>
-            <h3>Home</h3>
+          <Link href="/" className={classes.smallScreenOptions}>
+            <h3 className={pathname === "/" ? classes.selectedNav : ""}>
+              Home
+            </h3>
           </Link>
           <span className={classes.smallScreenOptions}></span>
           <Link href="/admin">
-            <h3>Admin</h3>
+            <h3 className={pathname === "/admin" ? classes.selectedNav : ""}>
+              Admin
+            </h3>
           </Link>
           <span></span>
           <Link href="/coders">
-            <h3>Coders</h3>
+            <h3 className={pathname === "/coders" ? classes.selectedNav : ""}>
+              Coders
+            </h3>
           </Link>
           <span className={classes.smallScreenOptions}></span>
           <Link href="/faqs" className={classes.smallScreenOptions}>

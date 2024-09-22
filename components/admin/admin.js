@@ -23,6 +23,7 @@ import { useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import ThreeDot from "../loader/three_body";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function AdminComponent({ session }) {
   const [selectedNav, setSelectedNav] = useState(1);
@@ -227,10 +228,13 @@ export default function AdminComponent({ session }) {
           </div>
         </div>
         <div className={classes.adminOthers}>
-          <div className={classes.adminSingleOthers}>
+          <Link
+            className={classes.adminSingleOthers}
+            href={"mailto:rhimanshu828@gmail.com"}
+          >
             <FaHeadphonesAlt />
             <div>Support Center</div>
-          </div>
+          </Link>
           <div className={classes.adminSingleOthers} onClick={() => signOut()}>
             <IoMdLogOut />
             <div>Logout</div>
