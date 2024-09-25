@@ -36,15 +36,17 @@ const contributors = [
     github: "https://github.com/sskkarthikeya",
   },
   {
+    fullname: "Arjit Pandey",
+    img: "/arjit.jpeg",
+    role: "Front End Developer",
+    linkedin: "https://www.linkedin.com/in/arjit-pandey-2b546a247/",
+    github: "https://github.com/Arjit-p08",
+  },
+  {
     fullname: "Rajveer Singh",
     img: "/rajveer.jpeg",
     role: "Front End Developer",
     github: "https://github.com/Rajveer2245",
-  },
-  {
-    fullname: "Arjit Pandey",
-    img: "/avatar.png",
-    role: "Front End Developer",
   },
   {
     fullname: "Palchhin Jain",
